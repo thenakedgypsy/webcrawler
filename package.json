@@ -1,0 +1,24 @@
+{
+  "name": "webcrawler",
+  "version": "1.0.0",
+  "description": "js webcrawler",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thenakedgypsy/webcrawler.git"
+  },
+  "author": "sam (tng)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thenakedgypsy/webcrawler/issues"
+  },
+  "homepage": "https://github.com/thenakedgypsy/webcrawler#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
