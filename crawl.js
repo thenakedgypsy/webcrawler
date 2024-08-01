@@ -1,4 +1,7 @@
-export function normalizeURL(urlString)
+import { JSDOM } from 'jsdom';
+
+
+function normalizeURL(urlString)
 {
     const urlObj = new URL(urlString);
     let newURL = `${urlObj.hostname}${urlObj.pathname}`;
@@ -9,4 +12,20 @@ export function normalizeURL(urlString)
     return newURL;
 }
 
-// export { normalizeURL };
+function getURLsFromHTML(htmlBody, baseURL)
+{
+    const htmlObj = new JSDOM(htmlBody);
+    let objList = htmlObj.window.document.querySelectorAll('a');
+    const objArray = Array.from(objList);
+    let linkArray = [];
+    for(let obj of objArray)
+    {
+        let link = obj.getAttribute('href');
+        let absoluteLink = new URL(link,baseURL).href;
+        linkArray.push(absoluteLink);
+    }
+    console.log(linkArray);
+}
+
+export { normalizeURL };
+export { getURLsFromHTML };
