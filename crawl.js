@@ -24,7 +24,7 @@ function getURLsFromHTML(htmlBody, baseURL)
         let absoluteLink = new URL(link,baseURL).href;
         linkArray.push(absoluteLink);
     }
-    console.log(linkArray);
+    return linkArray;
 }
 
 export { normalizeURL };
