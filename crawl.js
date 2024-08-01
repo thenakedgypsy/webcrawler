@@ -1,4 +1,4 @@
-function normalizeURL(urlString)
+export function normalizeURL(urlString)
 {
     const urlObj = new URL(urlString);
     let newURL = `${urlObj.hostname}${urlObj.pathname}`;
@@ -8,3 +8,5 @@ function normalizeURL(urlString)
     }
     return newURL;
 }
+
+// export { normalizeURL };
