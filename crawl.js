@@ -102,7 +102,25 @@ async function printReport(baseURL)
 {
     console.log(`Now Crawling At: ${baseURL}... Please Wait...`)
     const report = await deepCrawl(baseURL);
-    console.log(report);
+    console.log('\n--------------------------------------\n')
+    console.log(`Crawl at ${baseURL} complete.`)
+    console.log('\n--------------------------------------\n')
+    console.log('Results: \n')
+    let reportArray = Object.entries(report);
+    reportArray.sort((a,b) => b[1] - a[1]);
+    for(let entry of reportArray)
+    {
+        if(entry[1] === 1)
+        {
+            console.log(`Found ${entry[1]} internal link to ${entry[0]}`)
+        }
+        else
+        {
+            console.log(`Found ${entry[1]} internal links to ${entry[0]}`)
+        }
+    }
+    console.log('\n--------------------------------------\n')
+    
 }
 
 export { normalizeURL, getURLsFromHTML, fetchHTML, deepCrawl, printReport };
