@@ -1,4 +1,4 @@
-import { getURLsFromHTML,fetchHTML, deepCrawl } from "./crawl.js";
+import { getURLsFromHTML,fetchHTML, deepCrawl, printReport } from "./crawl.js";
 
 function main()
 {
@@ -12,7 +12,7 @@ function main()
         throw new Error("Too Many Arguments Given, Expected 1 argument: URL");
     }
     console.log(`Base URL Accepted: ${process.argv[2]}`);
-    deepCrawl(process.argv[2]);
+    printReport(process.argv[2]);
 
 
 }

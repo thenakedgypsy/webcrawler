@@ -62,7 +62,7 @@ async function fetchHTML(url)
     }
     catch(err)
     {
-        console.log(`Error During Fetch: ${err}`);
+        console.log(`Error During Fetch: ${err} -- skipping this item...`);
         return ''; //return blank string to avoid everything exploding if fetch fails
     }
 }
@@ -80,6 +80,7 @@ async function deepCrawl(baseURL, currentURL = baseURL, pages = {})
     const nCurrentURL = normalizeURL(currentURL);
     if(pages[nCurrentURL])
     {
+        pages[nCurrentURL] ++;
         return pages;
     }
     else
@@ -93,8 +94,15 @@ async function deepCrawl(baseURL, currentURL = baseURL, pages = {})
     {
         pages = await deepCrawl(baseURL,link,pages);
     }
-    console.log(pages);
+    console.log(`Crawling -> ${currentURL}...`);
     return pages;
 }
 
-export { normalizeURL, getURLsFromHTML, fetchHTML, deepCrawl };
+async function printReport(baseURL)
+{
+    console.log(`Now Crawling At: ${baseURL}... Please Wait...`)
+    const report = await deepCrawl(baseURL);
+    console.log(report);
+}
+
+export { normalizeURL, getURLsFromHTML, fetchHTML, deepCrawl, printReport };
